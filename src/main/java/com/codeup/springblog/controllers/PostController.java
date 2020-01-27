@@ -11,13 +11,13 @@ public class PostController {
 
     @GetMapping("/posts")
     @ResponseBody
-    public String postIndex(){
+    public String postsIndex(){
       return "An index of all posts";
     }
 
     @GetMapping("/posts/{id}")
     @ResponseBody
-    public String post(@PathVariable int id){
+    public String viewPost(@PathVariable int id){
         return "Showing post id#: " + id;
     }
 

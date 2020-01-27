@@ -8,6 +8,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class HelloController {
 
+    @GetMapping("/")
+    @ResponseBody
+    public String hi() {
+        return "this is the landing page";
+    }
+
     @GetMapping("/hello")
     @ResponseBody
     public String Hello() {

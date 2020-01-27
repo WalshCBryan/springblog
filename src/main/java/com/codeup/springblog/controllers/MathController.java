@@ -6,30 +6,34 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
-public class Mathcontroller {
+public class MathController {
 
-    @GetMapping("add/{num1}/and/{num2}")
+    @GetMapping("/add/{num1}/and/{num2}")
     @ResponseBody
     public String add(@PathVariable int num1, @PathVariable int num2){
         return "Add: " + num1 + " + " + num2 + " = " + (num1 + num2);
     }
 
-    @GetMapping("subtract/{num1}/from/{num2}")
+    @GetMapping("/subtract/{num1}/from/{num2}")
     @ResponseBody
     public String subtract(@PathVariable int num1, @PathVariable int num2){
         return "Subtract: " + num2 + " - " + num1 + " = " + (num2 - num1);
     }
 
-    @GetMapping("multiply/{num1}/and/{num2}")
+    @GetMapping("/multiply/{num1}/and/{num2}")
     @ResponseBody
     public String multiply(@PathVariable int num1, @PathVariable int num2){
         return "Multiply: " + num1 + " * " + num2 + " = " + (num1 * num2);
     }
 
-    @GetMapping("divide/{num1}/by/{num2}")
+    @GetMapping("/divide/{num1}/by/{num2}")
     @ResponseBody
-    public String divide(@PathVariable int num1, @PathVariable int num2){
-        return "Divide: " + num1 + " / " + num2 + " = " + (num1 / num2);
+    public String divide(@PathVariable int num1, @PathVariable int num2) throws Exception {
+        if (num2 == 0) {
+            throw new Exception("cannot divide by 0, ya dingus!");
+        } else {
+            return "Divide: " + num1 + " / " + num2 + " = " + (num1 / num2);
+        }
     }
 }
 
