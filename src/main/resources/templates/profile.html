@@ -1,12 +1,25 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8" />
-    <title>Home</title>
+    <meta charset="UTF-8">
+    <title>Profiles</title>
 </head>
 <body>
 
+<nav th:replace="partials/navbar :: main-nav"></nav>
+
 <h1>Hello, <span th:text="${username}">World</span>!</h1>
+<h1>Is this your Password: <span th:text="${password}">PW</span>?</h1>
+
+<ul th:each="item : ${shoppingCart}">
+    <li th:text="${item}"/>
+</ul>
+
+<div class="alert alert-danger" th:if="${isAdmin}">
+   <h2> this is visible to admins only</h2>
+</div>
+
+<footer th:replace="partials/footer :: footer"/>
 
 </body>
 </html>

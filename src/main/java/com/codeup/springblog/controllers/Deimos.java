@@ -11,7 +11,7 @@ public class Deimos {
 
 
     @GetMapping("/deimos/{days}")
-    public String countdown(@PathVariable int days, Model model) {
+    public String countdown(@PathVariable String days, Model model) {
         model.addAttribute("days", days);
         return "countdown";
     }

@@ -2,12 +2,15 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Deimos</title>
+    <title>Show</title>
 </head>
 <body>
-<h1> Prepare... </h1>
-<h3> D Day is coming ...</h3>
-<h4> in <span th:text="${days}">##</span> days</h4>
+
+<h1>single post</h1>
+
+<h3 th:text="${post.title}"></h3>
+<h5 th:text="${post.body}"></h5>
+
 
 
 

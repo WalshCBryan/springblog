@@ -4,7 +4,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class ProfileController {
@@ -12,6 +11,6 @@ public class ProfileController {
     @GetMapping("/profile/{username}")
     public String viewProfile(@PathVariable String username, Model model){
        model.addAttribute("username", username);
-       return "profile";
+       return "login";
     }
 }
