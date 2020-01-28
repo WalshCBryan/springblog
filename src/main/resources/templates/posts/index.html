@@ -7,9 +7,10 @@
 <body>
 <h2> showing all posts </h2>
 
-<ul th:each="post : ${posts}">
-    <li th:text="${post}"/>
-</ul>
+<div th:each="post : ${posts}">
+    <h2 th:text="${post.title}"></h2>
+    <h4 th:text="${post.body}"></h4>
+</div>
 
 </body>
 </html>

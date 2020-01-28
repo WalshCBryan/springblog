@@ -28,10 +28,6 @@ public class RollDiceController {
         int random = (int) (Math.random() * 6 + 1);
         model.addAttribute("num", num);
         model.addAttribute("random", random);
-        boolean same = false;
-        if (num == random) {
-            same = true;
-        }
         return "roll-dice";
     }
 }
