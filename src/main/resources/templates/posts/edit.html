@@ -9,12 +9,18 @@
 <h1> Edit your post </h1>
 <br>
 <form action="/posts/edit" method="post">
-    <input type="text" name="newTitle" th:value="${postTitle}" style="width: 15%">
+    <input type="text" name="newTitle" th:value="${postTitle}" style="width: 25%; font-size: 1.25em">
     <br><br>
-    <input type="text" name="newBody" th:value="${postBody}">
+    <textarea name="newBody" th:text="${postBody}" style="width: 35%; height: 300px; font-size: 1.25em"></textarea>
+    <br>
     <input type="hidden" name="sameId" th:value="${postId}">
+    <br>
     <input type="submit">
 </form>
 
 </body>
+
+<script>
+
+</script>
 </html>

@@ -70,9 +70,10 @@ public class PostController {
 //    }
 
     @GetMapping("/posts/edit")
-    public String editPostForm(@RequestParam String postTitle,
-                               @RequestParam String postBody,
-                               @RequestParam Long postId, Model model) {
+    public String editPostForm(
+            @RequestParam String postTitle,
+            @RequestParam String postBody,
+            @RequestParam Long postId, Model model) {
         model.addAttribute("postTitle", postTitle);
         model.addAttribute("postBody", postBody);
         model.addAttribute("postId", postId);
@@ -91,7 +92,7 @@ public class PostController {
     }
 
     @PostMapping("/posts/delete")
-    public String deletePostById( @RequestParam Long postId, Model model) {
+    public String deletePostById(@RequestParam Long postId, Model model) {
         postDao.deleteById(postId);
         return "redirect:/posts";
     }
