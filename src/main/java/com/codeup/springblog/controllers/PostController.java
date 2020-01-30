@@ -2,11 +2,10 @@ package com.codeup.springblog.controllers;
 
 import com.codeup.springblog.models.Post;
 import com.codeup.springblog.repositories.PostRepository;
+import com.codeup.springblog.repositories.UserRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.ArrayList;
 
 @Controller
 public class PostController {
@@ -51,14 +50,15 @@ public class PostController {
 //    }
 
     private final PostRepository postDao;
+    private final UserRepository userDao;
 
-    public PostController(PostRepository postDao) {
+    public PostController(PostRepository postDao, UserRepository userDao) {
         this.postDao = postDao;
+        this.userDao = userDao;
     }
 
     @GetMapping("/posts")
     public String index(Model model) {
-
         model.addAttribute("posts", postDao.findAll());
         return "posts/index";
     }
@@ -96,6 +96,28 @@ public class PostController {
         postDao.deleteById(postId);
         return "redirect:/posts";
     }
+
+    @GetMapping("/posts/{id}/details")
+    public String viewDetails(@PathVariable long id, Model viewModel) {
+        viewModel.addAttribute("post", postDao.findById(id));
+        return "posts/show";
+    }
+
+    @GetMapping("/posts/create")
+    public String createPostForm() {
+        return "posts/create";
+    }
+
+    @PostMapping("/posts/create")
+    public String createPost(
+            @RequestParam String newTitle,
+            @RequestParam String newbody,
+            Model model) {
+        Post p = new Post();
+        postDao.save(p);
+        return "redirect:/posts";
+    }
+
 
 
 }

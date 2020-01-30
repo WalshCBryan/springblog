@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <th:block th:insert="partials/head :: head"></th:block>
+    <title>Create Post</title>
+</head>
+<body>
+<br>
+<h1 class="column is-offset-1 is-size-2"> Create your post </h1>
+<hr>
+<br>
+
+<div class="column is-half is-offset-one-quarter">
+    <form action="/posts/create" method="post">
+        <div class="control column is-three-fifths is-offset-one-fifth">
+            <input class="input is-info" type="text" name="newTitle">
+            <p class="help">Title Here</p>
+        </div>
+        <div class="field">
+            <div class="control column">
+                <textarea class="textarea is-info" name="newBody" rows="8"></textarea>
+                <p class="help">Body Here</p>
+            </div>
+        </div>
+
+        <div class="column is-one-fifth is-offset-one-fifth">
+            <button type="submit" class="button is-link is-hovered">Submit Changes</button>
+        </div>
+    </form>
+</div>
+
+
+</body>
+
+
+</html>

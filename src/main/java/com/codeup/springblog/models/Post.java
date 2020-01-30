@@ -17,13 +17,25 @@ public class Post {
     @Column(length = 500, nullable = false)
     private String body;
 
-    public Post(){};
+    @ManyToOne
+    @JoinColumn (name = "user_id")
+    private User user;
 
+    @OneToOne
+    private PostDetails postDetails;
+
+    public Post(){};
 
     public Post(Long id, String title, String body) {
         this.id = id;
         this.title = title;
         this.body = body;
+    }
+
+    public Post(String body, User user, PostDetails postDetails) {
+        this.body = body;
+        this.user = user;
+        this.postDetails = postDetails;
     }
 
     public String getTitle() {
@@ -50,12 +62,12 @@ public class Post {
         this.id = id;
     }
 
-    @Override
-    public String toString() {
-        return "Post{" +
-                "id=" + id +
-                ", title='" + title + '\'' +
-                ", body='" + body + '\'' +
-                '}';
+    public PostDetails getPostDetails() {
+        return postDetails;
     }
+
+    public void setPostDetails(PostDetails postDetails) {
+        this.postDetails = postDetails;
+    }
+
 }

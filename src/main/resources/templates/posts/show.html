@@ -7,9 +7,11 @@
 <body>
 
 <h1>single post</h1>
-
 <h3 th:text="${post.title}"></h3>
 <h5 th:text="${post.body}"></h5>
+
+<h5 th:text="${post.postDetails.historyOfPost}"></h5>
+<h5 th:text="${post.postDetails.topicDescription}"></h5>
 
 
 
