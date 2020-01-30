@@ -1,6 +1,7 @@
 package com.codeup.springblog.models;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "posts")
@@ -23,6 +24,9 @@ public class Post {
 
     @OneToOne
     private PostDetails postDetails;
+
+    @OneToMany(mappedBy = "post", cascade = CascadeType.ALL)
+    private List<PostImage> postImage;
 
     public Post(){};
 
@@ -70,4 +74,11 @@ public class Post {
         this.postDetails = postDetails;
     }
 
+    public User getUser() { return user; }
+
+    public void setUser(User user) { this.user = user; }
+
+    public List<PostImage> getPostImage() { return postImage; }
+
+    public void setPostImage(List<PostImage> postImage) { this.postImage = postImage; }
 }

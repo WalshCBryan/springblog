@@ -1,5 +1,5 @@
 # drop database deimos_spring_db;
-#
+# #
 use deimos_spring_db;
 
 insert into users (username, email, password) values
@@ -20,6 +20,21 @@ insert into post_details (history_of_post, is_awesome, topic_description) values
 ('ghosts and stuff', false, 'spookiness'),
 ('the best laid plans...', false, 'books'),
 ('ken\'s headphones', false, 'electronics');
+
+insert into post_images(image_url, post_id) values ('https://i.redd.it/5uhl1h1xwkpx.jpg', 2);
+insert into post_images(image_url, post_id) values ('https://s3.amazonaws.com/lowres.cartoonstock.com/travel-tourism-vacation-holiday-day_out-beach-pollution-rhan1196_low.jpg', 2);
+insert into post_images(image_url, post_id) values ('https://o.aolcdn.com/images/dims?quality=85&image_uri=https%3A%2F%2Fo.aolcdn.com%2Fimages%2Fdims%3Fresize%3D2000%252C2000%252Cshrink%26image_uri%3Dhttps%253A%252F%252Fs.yimg.com%252Fos%252Fcreatr-uploaded-images%252F2019-10%252Fbe1bb990-e6c3-11e9-bfeb-f01b1546ebb0%26client%3Da1acac3e1b3290917d92%26signature%3D64e564ea7c582661e7ca9876df9b3a46549fc331&client=amp-blogside-v2&signature=20b140806f1c684496937aa18bde314376d382d5', 3);
+insert into post_images(image_url, post_id) values ('https://upload.wikimedia.org/wikipedia/en/0/08/House_Of_The_Dead%2C_Thelogo.png', 3);
+insert into post_images(image_url, post_id) values ('https://image.made-in-china.com/2f0j00qGnYPOfJlskB/Hot-Sale-Exciting-Arcade-House-of-The-Dead-4-Gun-Shooting-Game-Machine.jpg', 3);
+insert into post_images(image_url, post_id) values ('https://upload.wikimedia.org/wikipedia/en/0/08/House_Of_The_Dead%2C_Thelogo.png', 3);
+insert into post_images(image_url, post_id) values ('https://e.snmc.io/i/300/w/d26e0c83af0b0d2168d11859634e1641/1151183', 4);
+insert into post_images(image_url, post_id) values ('https://posterspy.com/wp-content/uploads/2019/06/La-classe-am%C3%A9ricaine-1500x2143.jpg', 4);
+insert into post_images(image_url, post_id) values ('https://e.snmc.io/i/300/w/d26e0c83af0b0d2168d11859634e1641/1151183', 4);
+insert into post_images(image_url, post_id) values ('https://images-na.ssl-images-amazon.com/images/I/91%2B6LJTjUYL._SY445_.jpg', 5);
+insert into post_images(image_url, post_id) values ('https://i.pinimg.com/originals/4f/e0/5c/4fe05c0a2d170a2261e6501618f913bd.png', 6);
+insert into post_images(image_url, post_id) values ('https://m.media-amazon.com/images/M/MV5BMTgyMjQyNjkwMl5BMl5BanBnXkFtZTgwNDk5ODIwMjE@._V1_SY1000_CR0,0,657,1000_AL_.jpg', 6);
+
+
 
 
 
