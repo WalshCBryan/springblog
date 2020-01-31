@@ -1,6 +1,7 @@
 package com.codeup.springblog.controllers;
 
 import com.codeup.springblog.models.Post;
+import com.codeup.springblog.models.User;
 import com.codeup.springblog.repositories.PostImageRepository;
 import com.codeup.springblog.repositories.PostRepository;
 import com.codeup.springblog.repositories.TagRepository;
@@ -80,23 +81,16 @@ public class PostController {
 
     @GetMapping("/posts/edit")
     public String editPostForm(
-            @RequestParam String postTitle,
-            @RequestParam String postBody,
-            @RequestParam Long postId, Model model) {
-        model.addAttribute("postTitle", postTitle);
-        model.addAttribute("postBody", postBody);
-        model.addAttribute("postId", postId);
+            @RequestParam long id,
+         Model model) {
+        model.addAttribute("post", postDao.getOne(id));
         return "posts/edit";
 
     }
 
     @PostMapping("/posts/edit")
-    public String editPost(
-            @RequestParam String newTitle,
-            @RequestParam String newBody,
-            @RequestParam long sameId) {
-        Post updatePost = new Post(sameId, newTitle, newBody);
-        postDao.save(updatePost);
+    public String editPost(@ModelAttribute Post post) {
+        postDao.save(post);
         return "redirect:/posts";
     }
 
@@ -113,18 +107,17 @@ public class PostController {
     }
 
     @GetMapping("/posts/create")
-    public String createPostForm() {
+    public String createPostForm(Model model) {
+        model.addAttribute("post", new Post());
         return "posts/create";
     }
 
     @PostMapping("/posts/create")
-    public String createPost(
-            @RequestParam String newTitle,
-            @RequestParam String newbody,
-            Model model) {
-        Post p = new Post();
-        postDao.save(p);
-        return "redirect:/posts";
+    public String createPost(@ModelAttribute Post post) {
+        User u = userDao.getOne(1L);
+        post.setUser(u);
+        postDao.save(post);
+        return "redirect:/posts/" + post.getId() + "/details";
     }
 
     @GetMapping("/posts/tag/{id}")

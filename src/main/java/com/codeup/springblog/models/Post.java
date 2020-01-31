@@ -18,16 +18,20 @@ public class Post {
     @Column(length = 500, nullable = false)
     private String body;
 
+//    each post has it's own unique set of post details
+    @OneToOne
+    private PostDetails postDetails;
+
+//    each post can have many different images associated
+    @OneToMany(mappedBy = "post", cascade = CascadeType.ALL)
+    private List<PostImage> postImage;
+
+//    many posts can be associated to a single user
     @ManyToOne
     @JoinColumn (name = "user_id")
     private User user;
 
-    @OneToOne
-    private PostDetails postDetails;
-
-    @OneToMany(mappedBy = "post", cascade = CascadeType.ALL)
-    private List<PostImage> postImage;
-
+//    a post can have many tags, and a tag can be associated to many posts
     @ManyToMany(mappedBy = "posts")
     private List<Tag> tags;
 
@@ -43,6 +47,17 @@ public class Post {
         this.body = body;
         this.user = user;
         this.postDetails = postDetails;
+    }
+
+    public Post(String title, String body, User user) {
+        this.title = title;
+        this.body = body;
+        this.user = user;
+    }
+
+    public Post(String title, String body) {
+        this.title = title;
+        this.body = body;
     }
 
     public String getTitle() {

@@ -11,20 +11,20 @@
 <br>
 
 <div class="column is-half is-offset-one-quarter">
-    <form action="/posts/create" method="post">
+    <form th:action="@{/posts/create}" th:method="post" th:object="${post}">
         <div class="control column is-three-fifths is-offset-one-fifth">
-            <input class="input is-info" type="text" name="newTitle">
+            <input class="input is-info" type="text" th:field="*{title}">
             <p class="help">Title Here</p>
         </div>
         <div class="field">
             <div class="control column">
-                <textarea class="textarea is-info" name="newBody" rows="8"></textarea>
+                <textarea class="textarea is-info" th:field="*{body}" rows="8"></textarea>
                 <p class="help">Body Here</p>
             </div>
         </div>
 
         <div class="column is-one-fifth is-offset-one-fifth">
-            <button type="submit" class="button is-link is-hovered">Submit Changes</button>
+            <button type="submit" class="button is-link is-hovered">Add Post</button>
         </div>
     </form>
 </div>

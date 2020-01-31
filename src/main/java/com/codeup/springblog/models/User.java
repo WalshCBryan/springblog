@@ -21,6 +21,7 @@ public class User {
     @Column(length = 50, nullable = false)
     private String password;
 
+//    a single user can have many posts
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     private List<Post> posts;
 

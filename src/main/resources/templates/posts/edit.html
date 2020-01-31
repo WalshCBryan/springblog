@@ -37,19 +37,19 @@
 <!--</form>-->
 <!--<div style="text-align: center; margin-left: 20%; margin-right: 20%">-->
 <div class="column is-half is-offset-one-quarter">
-    <form action="/posts/edit" method="post">
+    <form th:action="@{/posts/edit}" th:method="post" th:object="${post}">
         <div class="control column is-three-fifths is-offset-one-fifth">
-            <input class="input is-info" type="text" th:value="${postTitle}" name="newTitle">
+            <input class="input is-info" type="text" th:value="${post.title}" th:field="*{title}">
             <p class="help">Edit Title Here</p>
         </div>
         <div class="field">
             <div class="control column">
-                <textarea class="textarea is-info" th:text="${postBody}" name="newBody" rows="8"></textarea>
+                <textarea class="textarea is-info" th:text="${post.body}" th:field="*{body}" rows="8"></textarea>
                 <p class="help">Edit Body Here</p>
             </div>
         </div>
         <div>
-            <input type="hidden" name="sameId" th:value="${postId}">
+            <input type="hidden" name="id" th:value="${post.id}">
         </div>
         <div class="column is-one-fifth is-offset-one-fifth">
             <button type="submit" class="button is-link is-hovered">Submit Changes</button>

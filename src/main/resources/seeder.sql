@@ -8,18 +8,23 @@ insert into users (username, email, password) values
 ('testUser3','randomemail3@mail.com','password3'),
 ('testUser4','randomemail4@mail.com','password4');
 
-insert into posts (title, body, post_details_id, user_id) values ('Undertow (Contracorriente)', 'Duis mattis egestas metus. Aenean fermentum. Donec ut mauris eget massa tempor convallis. Nulla neque libero, convallis eget, eleifend luctus, ultricies eu, nibh. Quisque id justo sit amet sapien dignissim vestibulum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla dapibus dolor vel est. Donec odio justo, sollicitudin ut, suscipit a, feugiat et, eros. Vestibulum ac est lacinia nisi venenatis tristique.', 1, 1);
-insert into posts (title, body, post_details_id, user_id) values ('House of the Dead, The', 'Fusce lacus purus, aliquet at, feugiat non, pretium quis, lectus. Suspendisse potenti. In eleifend quam a odio. In hac habitasse platea dictumst. Maecenas ut massa quis augue luctus tincidunt. Nulla mollis molestie lorem.', 2, 2);
-insert into posts (title, body, post_details_id, user_id) values ('Classe américaine, La (a.k.a. Le grand détournement)', 'Integer tincidunt ante vel ipsum. Praesent blandit lacinia erat. Vestibulum sed magna at nunc commodo placerat. Praesent blandit. Nam nulla. Integer pede justo, lacinia eget, tincidunt eget, tempus vel, pede. Morbi porttitor lorem id ligula. Suspendisse ornare consequat lectus. In est risus, auctor sed, tristique in, tempus sit amet, sem.', 3, 3);
-insert into posts (title, body, post_details_id, user_id) values ('Age of Ignorance, The (a.k.a. Days of Darkness) (L''âge des ténèbres)', 'In congue. Etiam justo. Etiam pretium iaculis justo. In hac habitasse platea dictumst. Etiam faucibus cursus urna. Ut tellus. Nulla ut erat id mauris vulputate elementum. Nullam varius. Nulla facilisi. Cras non velit nec nisi vulputate nonummy.', 4, 4);
-insert into posts (title, body, post_details_id, user_id) values ('Frozen Ghost, The', 'Suspendisse accumsan tortor quis turpis. Sed ante. Vivamus tortor. Duis mattis egestas metus. Aenean fermentum. Donec ut mauris eget massa tempor convallis. Nulla neque libero, convallis eget, eleifend luctus, ultricies eu, nibh. Quisque id justo sit amet sapien dignissim vestibulum.', 5, 4);
-
 insert into post_details (history_of_post, is_awesome, topic_description) values
 ('a brief history of briefs', false, 'underpants'),
 ('Napoleon, man or great man?', false, 'shorties'),
 ('ghosts and stuff', false, 'spookiness'),
 ('the best laid plans...', false, 'books'),
 ('ken\'s headphones', false, 'electronics');
+
+# truncate post_images;
+insert into tags (name) values ('silly');
+insert into tags (name) values ('funny');
+insert into tags (name) values ('humor');
+
+insert into posts (title, body, post_details_id, user_id) values ('Undertow (Contracorriente)', 'Duis mattis egestas metus. Aenean fermentum. Donec ut mauris eget massa tempor convallis. Nulla neque libero, convallis eget, eleifend luctus, ultricies eu, nibh. Quisque id justo sit amet sapien dignissim vestibulum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla dapibus dolor vel est. Donec odio justo, sollicitudin ut, suscipit a, feugiat et, eros. Vestibulum ac est lacinia nisi venenatis tristique.', 1, 1);
+insert into posts (title, body, post_details_id, user_id) values ('House of the Dead, The', 'Fusce lacus purus, aliquet at, feugiat non, pretium quis, lectus. Suspendisse potenti. In eleifend quam a odio. In hac habitasse platea dictumst. Maecenas ut massa quis augue luctus tincidunt. Nulla mollis molestie lorem.', 2, 2);
+insert into posts (title, body, post_details_id, user_id) values ('Classe américaine, La (a.k.a. Le grand détournement)', 'Integer tincidunt ante vel ipsum. Praesent blandit lacinia erat. Vestibulum sed magna at nunc commodo placerat. Praesent blandit. Nam nulla. Integer pede justo, lacinia eget, tincidunt eget, tempus vel, pede. Morbi porttitor lorem id ligula. Suspendisse ornare consequat lectus. In est risus, auctor sed, tristique in, tempus sit amet, sem.', 3, 3);
+insert into posts (title, body, post_details_id, user_id) values ('Age of Ignorance, The (a.k.a. Days of Darkness) (L''âge des ténèbres)', 'In congue. Etiam justo. Etiam pretium iaculis justo. In hac habitasse platea dictumst. Etiam faucibus cursus urna. Ut tellus. Nulla ut erat id mauris vulputate elementum. Nullam varius. Nulla facilisi. Cras non velit nec nisi vulputate nonummy.', 4, 4);
+insert into posts (title, body, post_details_id, user_id) values ('Frozen Ghost, The', 'Suspendisse accumsan tortor quis turpis. Sed ante. Vivamus tortor. Duis mattis egestas metus. Aenean fermentum. Donec ut mauris eget massa tempor convallis. Nulla neque libero, convallis eget, eleifend luctus, ultricies eu, nibh. Quisque id justo sit amet sapien dignissim vestibulum.', 5, 4);
 
 insert into post_images(image_url, post_id) values ('https://i.redd.it/5uhl1h1xwkpx.jpg', 2);
 insert into post_images(image_url, post_id) values ('https://s3.amazonaws.com/lowres.cartoonstock.com/travel-tourism-vacation-holiday-day_out-beach-pollution-rhan1196_low.jpg', 1);
@@ -33,11 +38,6 @@ insert into post_images(image_url, post_id) values ('https://e.snmc.io/i/300/w/d
 insert into post_images(image_url, post_id) values ('https://images-na.ssl-images-amazon.com/images/I/91%2B6LJTjUYL._SY445_.jpg', 4);
 insert into post_images(image_url, post_id) values ('https://i.pinimg.com/originals/4f/e0/5c/4fe05c0a2d170a2261e6501618f913bd.png', 5);
 insert into post_images(image_url, post_id) values ('https://m.media-amazon.com/images/M/MV5BMTgyMjQyNjkwMl5BMl5BanBnXkFtZTgwNDk5ODIwMjE@._V1_SY1000_CR0,0,657,1000_AL_.jpg', 5);
-
-# truncate post_images;
-insert into tags (name) values ('silly');
-insert into tags (name) values ('funny');
-insert into tags (name) values ('humor');
 
 insert into post_tag (post_id, tag_id) values
 (1,1),
