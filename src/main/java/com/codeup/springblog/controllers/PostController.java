@@ -3,6 +3,7 @@ package com.codeup.springblog.controllers;
 import com.codeup.springblog.models.Post;
 import com.codeup.springblog.repositories.PostImageRepository;
 import com.codeup.springblog.repositories.PostRepository;
+import com.codeup.springblog.repositories.TagRepository;
 import com.codeup.springblog.repositories.UserRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -53,11 +54,16 @@ public class PostController {
     private final PostRepository postDao;
     private final UserRepository userDao;
     private final PostImageRepository postImageDao;
+    private final TagRepository tagDao;
 
-    public PostController(PostRepository postDao, UserRepository userDao, PostImageRepository postImageDao) {
+    public PostController(PostRepository postDao,
+                          UserRepository userDao,
+                          PostImageRepository postImageDao,
+                          TagRepository tagDao) {
         this.postDao = postDao;
         this.userDao = userDao;
         this.postImageDao = postImageDao;
+        this.tagDao = tagDao;
     }
 
     @GetMapping("/posts")
@@ -119,6 +125,12 @@ public class PostController {
         Post p = new Post();
         postDao.save(p);
         return "redirect:/posts";
+    }
+
+    @GetMapping("/posts/tag/{id}")
+    public String showByTag(@PathVariable long id, Model model){
+        model.addAttribute("tag", tagDao.getOne(id));
+        return "posts/showbycat";
     }
 
 

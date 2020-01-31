@@ -15,12 +15,13 @@
 <div style="display: flex; flex-wrap: wrap">
     <div th:each="image : ${post.postImage}">
         <div>
-
             <img th:src="${image.url}" style="height: 300px; margin-left: 10px; margin-right: 10px;"/>
-
         </div>
     </div>
 </div>
+
+<!---->
+<h4 th:text="${post.user.email}"></h4>
 
 </body>
 </html>

@@ -28,6 +28,9 @@ public class Post {
     @OneToMany(mappedBy = "post", cascade = CascadeType.ALL)
     private List<PostImage> postImage;
 
+    @ManyToMany(mappedBy = "posts")
+    private List<Tag> tags;
+
     public Post(){};
 
     public Post(Long id, String title, String body) {
@@ -81,4 +84,12 @@ public class Post {
     public List<PostImage> getPostImage() { return postImage; }
 
     public void setPostImage(List<PostImage> postImage) { this.postImage = postImage; }
+
+    public List<Tag> getTags() {
+        return tags;
+    }
+
+    public void setTags(List<Tag> tags) {
+        this.tags = tags;
+    }
 }
