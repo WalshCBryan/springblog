@@ -50,5 +50,6 @@ insert into posts (title, body, user_id) values ('Frozen Ghost, The', 'Suspendis
 # (5,3),
 # (5,2);
 
-
-
+# use deimos_spring_db;
+#
+# truncate posts;

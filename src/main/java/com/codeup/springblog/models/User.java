@@ -18,8 +18,12 @@ public class User {
     @Column(length = 50, nullable = false)
     private String email;
 
-    @Column(length = 50, nullable = false)
+    @Column(nullable = false)
     private String password;
+
+    @ManyToOne
+    @JoinColumn (name = "user_role_id")
+    private UserRole userRole;
 
 //    a single user can have many posts
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
@@ -39,6 +43,14 @@ public class User {
         this.email = email;
         this.password = password;
     }
+
+//    copy constructor
+public User(User copy) {
+    id = copy.id; // This line is SUPER important! Many things won't work if it's absent
+    email = copy.email;
+    username = copy.username;
+    password = copy.password;
+}
 
     public long getId() {
         return id;
@@ -70,5 +82,21 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public UserRole getUserRole() {
+        return userRole;
+    }
+
+    public void setUserRole(UserRole userRole) {
+        this.userRole = userRole;
+    }
+
+    public List<Post> getPosts() {
+        return posts;
+    }
+
+    public void setPosts(List<Post> posts) {
+        this.posts = posts;
     }
 }
