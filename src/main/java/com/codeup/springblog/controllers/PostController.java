@@ -2,9 +2,9 @@ package com.codeup.springblog.controllers;
 
 import com.codeup.springblog.models.Post;
 import com.codeup.springblog.models.User;
-import com.codeup.springblog.repositories.PostImageRepository;
+//import com.codeup.springblog.repositories.PostImageRepository;
 import com.codeup.springblog.repositories.PostRepository;
-import com.codeup.springblog.repositories.TagRepository;
+//import com.codeup.springblog.repositories.TagRepository;
 import com.codeup.springblog.repositories.UserRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -54,19 +54,21 @@ public class PostController {
 
     private final PostRepository postDao;
     private final UserRepository userDao;
-    private final PostImageRepository postImageDao;
-    private final TagRepository tagDao;
+//    private final PostImageRepository postImageDao;
+//    private final TagRepository tagDao;
 
     public PostController(PostRepository postDao,
-                          UserRepository userDao,
-                          PostImageRepository postImageDao,
-                          TagRepository tagDao) {
+                          UserRepository userDao
+//                          PostImageRepository postImageDao,
+//                          TagRepository tagDao
+                          ) {
         this.postDao = postDao;
         this.userDao = userDao;
-        this.postImageDao = postImageDao;
-        this.tagDao = tagDao;
+//        this.postImageDao = postImageDao;
+//        this.tagDao = tagDao;
     }
 
+//    SHOW ALL POSTS
     @GetMapping("/posts")
     public String index(Model model) {
         model.addAttribute("posts", postDao.findAll());
@@ -79,10 +81,11 @@ public class PostController {
 //        return "posts/index";
 //    }
 
+//    EDIT POST
     @GetMapping("/posts/edit")
     public String editPostForm(
             @RequestParam long id,
-         Model model) {
+            Model model) {
         model.addAttribute("post", postDao.getOne(id));
         return "posts/edit";
 
@@ -94,18 +97,22 @@ public class PostController {
         return "redirect:/posts";
     }
 
+    //      DELETE POST
     @PostMapping("/posts/delete")
     public String deletePostById(@RequestParam Long postId, Model model) {
         postDao.deleteById(postId);
         return "redirect:/posts";
     }
 
+    //    SHOW POST DETAILS
     @GetMapping("/posts/{id}/details")
     public String viewDetails(@PathVariable long id, Model viewModel) {
         viewModel.addAttribute("post", postDao.findById(id));
         return "posts/show";
     }
 
+
+    //    CREATE POST
     @GetMapping("/posts/create")
     public String createPostForm(Model model) {
         model.addAttribute("post", new Post());
@@ -120,12 +127,11 @@ public class PostController {
         return "redirect:/posts/" + post.getId() + "/details";
     }
 
-    @GetMapping("/posts/tag/{id}")
-    public String showByTag(@PathVariable long id, Model model){
-        model.addAttribute("tag", tagDao.getOne(id));
-        return "posts/showbycat";
-    }
-
+//    @GetMapping("/posts/tag/{id}")
+//    public String showByTag(@PathVariable long id, Model model){
+//        model.addAttribute("tag", tagDao.getOne(id));
+//        return "posts/showbycat";
+//    }
 
 
 }

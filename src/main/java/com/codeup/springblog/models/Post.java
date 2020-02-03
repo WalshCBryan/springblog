@@ -19,12 +19,12 @@ public class Post {
     private String body;
 
 //    each post has it's own unique set of post details
-    @OneToOne
-    private PostDetails postDetails;
+//    @OneToOne
+//    private PostDetails postDetails;
 
 //    each post can have many different images associated
-    @OneToMany(mappedBy = "post", cascade = CascadeType.ALL)
-    private List<PostImage> postImage;
+//    @OneToMany(mappedBy = "post", cascade = CascadeType.ALL)
+//    private List<PostImage> postImage;
 
 //    many posts can be associated to a single user
     @ManyToOne
@@ -32,8 +32,8 @@ public class Post {
     private User user;
 
 //    a post can have many tags, and a tag can be associated to many posts
-    @ManyToMany(mappedBy = "posts")
-    private List<Tag> tags;
+//    @ManyToMany(mappedBy = "posts")
+//    private List<Tag> tags;
 
     public Post(){};
 
@@ -42,12 +42,12 @@ public class Post {
         this.title = title;
         this.body = body;
     }
-
-    public Post(String body, User user, PostDetails postDetails) {
-        this.body = body;
-        this.user = user;
-        this.postDetails = postDetails;
-    }
+//
+//    public Post(String body, User user, PostDetails postDetails) {
+//        this.body = body;
+//        this.user = user;
+//        this.postDetails = postDetails;
+//    }
 
     public Post(String title, String body, User user) {
         this.title = title;
@@ -84,27 +84,27 @@ public class Post {
         this.id = id;
     }
 
-    public PostDetails getPostDetails() {
-        return postDetails;
-    }
+//    public PostDetails getPostDetails() {
+//        return postDetails;
+//    }
 
-    public void setPostDetails(PostDetails postDetails) {
-        this.postDetails = postDetails;
-    }
+//    public void setPostDetails(PostDetails postDetails) {
+//        this.postDetails = postDetails;
+//    }
 
     public User getUser() { return user; }
 
     public void setUser(User user) { this.user = user; }
 
-    public List<PostImage> getPostImage() { return postImage; }
+//    public List<PostImage> getPostImage() { return postImage; }
 
-    public void setPostImage(List<PostImage> postImage) { this.postImage = postImage; }
+//    public void setPostImage(List<PostImage> postImage) { this.postImage = postImage; }
 
-    public List<Tag> getTags() {
-        return tags;
-    }
+//    public List<Tag> getTags() {
+//        return tags;
+//    }
 
-    public void setTags(List<Tag> tags) {
-        this.tags = tags;
-    }
+//    public void setTags(List<Tag> tags) {
+//        this.tags = tags;
+//    }
 }
