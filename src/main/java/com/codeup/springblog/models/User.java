@@ -21,9 +21,6 @@ public class User {
     @Column(nullable = false)
     private String password;
 
-    @ManyToOne
-    @JoinColumn (name = "user_role_id")
-    private UserRole userRole;
 
 //    a single user can have many posts
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
@@ -82,21 +79,5 @@ public User(User copy) {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public UserRole getUserRole() {
-        return userRole;
-    }
-
-    public void setUserRole(UserRole userRole) {
-        this.userRole = userRole;
-    }
-
-    public List<Post> getPosts() {
-        return posts;
-    }
-
-    public void setPosts(List<Post> posts) {
-        this.posts = posts;
     }
 }

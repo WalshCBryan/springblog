@@ -53,3 +53,4 @@ insert into posts (title, body, user_id) values ('Frozen Ghost, The', 'Suspendis
 # use deimos_spring_db;
 #
 # truncate posts;
+

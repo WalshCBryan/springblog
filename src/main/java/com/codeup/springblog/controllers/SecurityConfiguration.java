@@ -1,6 +1,7 @@
 package com.codeup.springblog.controllers;
 
 import com.codeup.springblog.services.UserDetailsLoader;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -27,8 +28,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth
                 .userDetailsService(usersLoader) // How to find users by their username
-                .passwordEncoder(passwordEncoder()) // How to encode and verify passwords
-        ;
+                .passwordEncoder(passwordEncoder()); // How to encode and verify passwords
     }
 
     @Override
@@ -46,9 +46,13 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 /* Pages that can be viewed without having to log in */
                 .and()
                 .authorizeRequests()
-                .antMatchers("/", "/ads","/posts") // anyone can see the home and the ads pages
+                .antMatchers("/", "/ads", "/posts") // anyone can see the home and the ads pages
                 .permitAll()
                 /* Pages that require authentication */
+                .and()
+                .authorizeRequests()
+                .antMatchers("/admin/**")
+                .hasRole("ADMIN")
                 .and()
                 .authorizeRequests()
                 .antMatchers(
@@ -58,4 +62,13 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .authenticated()
         ;
     }
+
+    @Autowired
+    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+        auth
+                .inMemoryAuthentication()
+                .withUser("admin").password(passwordEncoder().encode("admin")).roles("ADMIN");
+
+    }
 }
+
