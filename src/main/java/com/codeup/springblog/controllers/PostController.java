@@ -66,7 +66,7 @@ public class PostController {
     }
 
     //    SHOW POST DETAILS
-    @GetMapping("/posts/{id}/details")
+    @GetMapping("/posts/{id}")
     public String viewDetails(@PathVariable long id, Model model) {
         model.addAttribute("post", postDao.findById(id));
         User u = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
