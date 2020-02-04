@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Show</title>
@@ -13,7 +13,13 @@
 <h5 th:text="${post.body}"></h5>
 
 
-<div th:if="${post.getUser().getId() == userId}">
+<!--<div sec:authorize="${post.getUser().getId() == userId} || ">-->
+
+
+<!--<div sec:authorize="hasRole('ROLE_ADMIN') || ${post.getUser().getId() == userId}">-->
+<div th:if="${post.getUser().getId() == userId or #authorization.expression('hasRole(''ROLE_ADMIN'')')}">
+
+
     <form th:action="@{|/posts/${post.id}/edit|}" th:method="get" th:object="${post}">
         <input type="hidden" name="id" th:value="${post.getId()}">
         <input type="submit" value="Edit This Post">
