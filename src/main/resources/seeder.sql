@@ -54,3 +54,8 @@ insert into posts (title, body, user_id) values ('Frozen Ghost, The', 'Suspendis
 #
 # truncate posts;
 
+truncate user_roles;
+
+insert into user_roles(role, user_id) values ('ROLE_ADMIN', 1);
+insert into user_roles(role, user_id) values ('ROLE_USER', 2);
+

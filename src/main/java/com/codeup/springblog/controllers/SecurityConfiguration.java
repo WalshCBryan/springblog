@@ -1,18 +1,23 @@
 package com.codeup.springblog.controllers;
 
+import com.codeup.springblog.security.UserWithRoles;
 import com.codeup.springblog.services.UserDetailsLoader;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Configuration
+@EnableWebSecurity
+@ComponentScan(basePackageClasses = UserWithRoles.class)
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
-
+    @Autowired
     private UserDetailsLoader usersLoader;
 
     public SecurityConfiguration(UserDetailsLoader usersLoader) {
@@ -51,24 +56,14 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 /* Pages that require authentication */
                 .and()
                 .authorizeRequests()
-                .antMatchers("/admin/**")
-                .hasRole("ADMIN")
-                .and()
-                .authorizeRequests()
                 .antMatchers(
                         "/posts/create", // only authenticated users can create ads
                         "/posts/{id}/edit" // only authenticated users can edit ads
                 )
                 .authenticated()
-        ;
-    }
-
-    @Autowired
-    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-        auth
-                .inMemoryAuthentication()
-                .withUser("admin").password(passwordEncoder().encode("admin")).roles("ADMIN");
-
+                .and()
+                .authorizeRequests()
+                .antMatchers("/admin/**")
+                .hasRole("ADMIN");
     }
 }
-
