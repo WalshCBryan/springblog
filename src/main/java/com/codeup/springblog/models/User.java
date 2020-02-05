@@ -23,6 +23,7 @@ public class User {
 
 
 //    a single user can have many posts
+
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     private List<Post> posts;
 
@@ -48,6 +49,7 @@ public User(User copy) {
     username = copy.username;
     password = copy.password;
 }
+
 
     public long getId() {
         return id;

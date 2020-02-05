@@ -7,6 +7,7 @@ import com.codeup.springblog.repositories.PostRepository;
 //import com.codeup.springblog.repositories.TagRepository;
 import com.codeup.springblog.repositories.UserRepository;
 import org.springframework.security.core.context.SecurityContextHolder;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -28,6 +29,7 @@ public class PostController {
         this.userDao = userDao;
 //        this.postImageDao = postImageDao;
 //        this.tagDao = tagDao;
+
     }
 
     //    SHOW ALL POSTS
@@ -95,6 +97,7 @@ public class PostController {
 //        model.addAttribute("tag", tagDao.getOne(id));
 //        return "posts/showbycat";
 //    }
+
 
 
 }
