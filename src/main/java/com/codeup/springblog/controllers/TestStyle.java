@@ -1,13 +1,15 @@
 package com.codeup.springblog.controllers;
 
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
-public class HomeController {
+public class TestStyle {
 
-    @GetMapping("/home")
-    public String homepage() {
-        return "redirect:/posts";
+    @GetMapping("/test-style")
+    public String returnTest() {
+        return "test-style";
     }
+
 }

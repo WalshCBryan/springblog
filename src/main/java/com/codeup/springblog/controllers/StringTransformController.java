@@ -54,17 +54,17 @@ public class StringTransformController {
         }
     }
 
-    @RequestMapping(value="**")
-    @ResponseBody
-    public String respondToAllOther() {
-        return "this URI is not supported.";
-    }
-
-    @RequestMapping(value="/wildcard/" + "**")
-    @ResponseBody
-    public String respondToAllOtherWildcards() {
-        return "this wildcard URI is not supported.";
-    }
+//    @RequestMapping(value="**")
+//    @ResponseBody
+//    public String respondToAllOther() {
+//        return "this URI is not supported.";
+//    }
+//
+//    @RequestMapping(value="/wildcard/" + "**")
+//    @ResponseBody
+//    public String respondToAllOtherWildcards() {
+//        return "this wildcard URI is not supported.";
+//    }
 
 }
 

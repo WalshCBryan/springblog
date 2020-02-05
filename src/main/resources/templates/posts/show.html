@@ -1,18 +1,39 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Show</title>
 </head>
 <body>
+<nav th:replace="partials/navbar :: main-nav"></nav>
+
 
 <h1>single post</h1>
-
 <h3 th:text="${post.title}"></h3>
 <h5 th:text="${post.body}"></h5>
 
 
+<!--<div sec:authorize="${post.getUser().getId() == userId} || ">-->
 
+
+<!--<div sec:authorize="hasRole('ROLE_ADMIN') || ${post.getUser().getId() == userId}">-->
+<div th:if="${post.getUser().getId() == userId or #authorization.expression('hasRole(''ROLE_ADMIN'')')}">
+
+
+    <form th:action="@{|/posts/${post.id}/edit|}" th:method="get" th:object="${post}">
+        <input type="hidden" name="id" th:value="${post.getId()}">
+        <input type="submit" value="Edit This Post">
+    </form>
+    <form th:action="@{/posts/delete}" th:method="post" th:object="${post}">
+        <input type="hidden" name="postId" th:value="${post.getId()}">
+        <input type="submit" value="Delete This Post">
+    </form>
+</div>
+
+
+
+<!---->
+<h4 th:text="${post.user.email}"></h4>
 
 </body>
 </html>
