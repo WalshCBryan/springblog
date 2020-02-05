@@ -100,10 +100,9 @@ public class PostIntegrationTests {
                         .with(csrf())
                         .session((MockHttpSession) session)
                         .param("title", "Test Title")
-                        .param("body", "This is a Test Ad")
+                        .param("body", "This is a Test Post")
         )
-                .andExpect(status().is3xxRedirection())
-                .andDo(print());
+                .andExpect(status().is3xxRedirection());
 
         // clean up
         Post p = postDao.findByTitle("Test Title");
