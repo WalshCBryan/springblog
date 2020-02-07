@@ -80,8 +80,13 @@ public class PostController {
     //    CREATE POST
     @GetMapping("/posts/create")
     public String createPostForm(Model model) {
-        model.addAttribute("post", new Post());
-        return "posts/create";
+        User u = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        if (u == null) {
+            return "login";
+        } else {
+            model.addAttribute("post", new Post());
+            return "posts/create";
+        }
     }
 
     @PostMapping("/posts/create")

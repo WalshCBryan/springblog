@@ -1,22 +1,57 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
+    <th:block th:insert="partials/head :: head"></th:block>
     <meta charset="UTF-8" />
     <title>Sign up</title>
 </head>
 <body>
-<h1>Create an account</h1>
-<form th:action="@{/sign-up}" method="POST" th:object="${user}">
-    <label for="username">Username</label>
-    <input id="username" th:field="*{username}" />
+<nav th:replace="partials/navbar :: main-nav"></nav>
+<br>
+<h1 class="column is-offset-1 is-size-2"> Sign Up </h1>
+<hr>
+<br>
+<div class="column is-half is-offset-one-quarter">
 
-    <label for="email">Email</label>
-    <input id="email" th:field="*{email}" />
+    <form th:action="@{/sign-up}" th:method="post" th:object="${user}">
+        <div class="control column is-three-fifths is-offset-one-fifth">
+            <input class="input is-info" type="text" th:field="*{username}">
+            <p class="help">Username</p>
+        </div>
+        <div class="field">
+            <div class="control column is-three-fifths is-offset-one-fifth">
+                <input type="text" class="input is-info" th:field="*{email}">
+                <p class="help">Email</p>
+            </div>
+        </div>
+        <div class="field">
+            <div class="control column is-three-fifths is-offset-one-fifth">
+                <input type="password" class="input is-info" th:field="*{password}">
+                <p class="help">Password</p>
+            </div>
+        </div>
 
-    <label for="password">Password</label>
-    <input id="password" type="password" th:field="*{password}" />
+        <div class="column is-one-fifth is-offset-one-fifth">
+            <button type="submit" class="button is-link is-hovered">Login</button>
+        </div>
+    </form>
+</div>
 
-    <input value="Sign me up!" type="submit" />
-</form>
+
+<!--------------------------------------------->
+<!--<br>-->
+<!--<h1>Create an account</h1>-->
+<!--<form th:action="@{/sign-up}" method="POST" th:object="${user}">-->
+<!--    <label for="username">Username</label>-->
+<!--    <input id="username" th:field="*{username}" />-->
+
+<!--    <label for="email">Email</label>-->
+<!--    <input id="email" th:field="*{email}" />-->
+
+<!--    <label for="password">Password</label>-->
+<!--    <input id="password" type="password" th:field="*{password}" />-->
+
+<!--    <input value="Sign me up!" type="submit" />-->
+<!--</form>-->
 </body>
 </html>

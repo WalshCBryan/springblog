@@ -1,25 +1,58 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
+    <th:block th:insert="partials/head :: head"></th:block>
     <meta charset="UTF-8" />
     <title>Log In</title>
 </head>
 <body>
-<h1>Log In</h1>
+<nav th:replace="partials/navbar :: main-nav"></nav>
+<br>
+<h1 class="column is-offset-1 is-size-2"> Log in </h1>
+<hr>
+<br>
 
-<div th:if="${param.error}">
-    Invalid Username and Password.
-</div>
-<div th:if="${param.logout}">
-    You have been logged out.
+<div class="column is-half is-offset-one-quarter">
+    <div th:if="${param.error}">
+        Invalid Username and Password.
+    </div>
+    <div th:if="${param.logout}">
+        You have been logged out.
+    </div>
+    <form th:action="@{/login}" th:method="post">
+        <div class="control column is-three-fifths is-offset-one-fifth">
+            <input class="input is-info" type="text" name="username">
+            <p class="help">Username</p>
+        </div>
+        <div class="field">
+            <div class="control column is-three-fifths is-offset-one-fifth">
+                <input type="text" class="input is-info" name="password">
+                <p class="help">Password</p>
+            </div>
+        </div>
+        <div class="column is-one-fifth is-offset-one-fifth">
+            <button type="submit" class="button is-link is-hovered">Login</button>
+        </div>
+    </form>
 </div>
 
-<form th:action="@{/login}" method="post">
-    <label for="username">Username</label>
-    <input id="username" name="username" type="text" />
-    <label for="password">Password</label>
-    <input id="password" name="password" type="password" />
-    <input type="submit" value="Log In" />
-</form>
+
+<!------------------------------------------------>
+<!--<h1>Log In</h1>-->
+
+<!--<div th:if="${param.error}">-->
+<!--    Invalid Username and Password.-->
+<!--</div>-->
+<!--<div th:if="${param.logout}">-->
+<!--    You have been logged out.-->
+<!--</div>-->
+
+<!--<form th:action="@{/login}" method="post">-->
+<!--    <label for="username">Username</label>-->
+<!--    <input id="username" name="username" type="text" />-->
+<!--    <label for="password">Password</label>-->
+<!--    <input id="password" name="password" type="password" />-->
+<!--    <input type="submit" value="Log In" />-->
+<!--</form>-->
 </body>
 </html>
