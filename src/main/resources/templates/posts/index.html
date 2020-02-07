@@ -19,6 +19,10 @@
             <h3 th:text="${post.title}" class="is-size-5"></h3>
             <p th:text="${post.body}"></p>
 
+            <form th:action=" @{|/posts/${post.id}|}" th:method="get">
+                <button class="button is-primary is-hovered m-r-sm" style="margin-top: 8px">View</button>
+            </form>
+
 
         </div>
     </div>

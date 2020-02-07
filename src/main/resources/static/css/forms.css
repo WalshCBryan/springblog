@@ -4,6 +4,13 @@ body{
 
 body {
     height: 100vh;
+    color: black;
+    font-family: 'Rock Salt', cursive;
+}
+
+.help {
+    color: black;
+    font-weight: bold;
 }
 
 /* unvisited link */
@@ -24,6 +31,14 @@ a:hover {
 /* selected link */
 a:active {
     color: #0000FF;
+}
+
+.rock {
+    font-family: 'Rock Salt', cursive;
+}
+
+.button {
+    font-family: 'Rock Salt', cursive;
 }
 
 /*Spacing Helpers*/
