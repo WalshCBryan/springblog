@@ -4,43 +4,27 @@
 <head>
     <meta charset="UTF-8">
     <title>Navbar</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.min.css">
+<!--    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>-->
 </head>
 <body>
 
 <nav class="navbar" role="navigation" aria-label="main navigation" th:fragment="main-nav">
     <div class="navbar-brand">
         <a class="navbar-item" href="/posts">
-            <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/0de58711-79d4-49aa-b5f7-f2e5bec57065-profile_image-70x70.png"
-                 width="60" height="60">
+            <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/0de58711-79d4-49aa-b5f7-f2e5bec57065-profile_image-70x70.png" width="40" height="80">
         </a>
 
-        <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
-           data-target="navbarBasicExample">
-            <span aria-hidden="true">
-                <a href="/posts/create">
-                Create a Post!
-            </a>
-            </span>
 
-            <span aria-hidden="true">
-                <form th:action="@{/sign-up}" th:method="get">
-                        <button class="button is-primary is-hovered m-r-sm" style="margin-top: 8px">Sign-Up</button>
-                    </form>
-            </span>
-            <span aria-hidden="true">
-                                    <form th:action="@{/login}" th:method="get">
-                        <button class="button is-light is-hovered m-r-sm" style="margin-top: 8px">Login</button>
-                    </form>
-            </span>
-            <span aria-hidden="true">
-                                    <form th:action="@{/logout}" th:method="post">
-                        <button class="button is-light is-hovered m-r-sm" style="margin-top: 8px">Logout</button>
-                    </form>
-            </span>
+<!----------------->
+        <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
         </a>
     </div>
 
-    <div id="navbarBasicExample" class="navbar-menu">
+    <div id="navbarBasicExample" class="navbar-menu is-active">
         <div class="navbar-start">
             <a href="/posts" class="navbar-item">
                 Home
@@ -50,20 +34,20 @@
                 Create a Post!
             </a>
 
-            <div class="navbar-item has-dropdown is-hoverable">
+            <div class="navbar-item has-dropdown is-hoverable is-hidden-touch">
                 <a class="navbar-link">
                     More
                 </a>
 
                 <div class="navbar-dropdown">
-                    <a href="/posts" class="navbar-item">
-                        placeholder
+                    <a href="/login" class="navbar-item">
+                        Login
                     </a>
-                    <a href="/posts" class="navbar-item">
-                        placeholder
+                    <a href="/sign-up" class="navbar-item">
+                        sign-up
                     </a>
-                    <a href="/posts" class="navbar-item">
-                        placeholder
+                    <a href="/login?logout" class="navbar-item">
+                        Logout
                     </a>
                     <hr class="navbar-divider">
                     <a href="/posts" class="navbar-item">
@@ -92,37 +76,36 @@
 </nav>
 
 
-<!----------------------------------------------------------->
-<!--<nav th:fragment="main-nav">-->
-<!--    <ul style="display: flex; justify-content: space-evenly">-->
-<!--        <li>-->
-<!--            <form th:action="@{/posts}" th:method="get">-->
-<!--                <button class="button is-link is-hovered" style="margin-top: 8px">Home</button>-->
-<!--            </form>-->
-<!--        </li>-->
-<!--        <li>-->
-<!--            <form th:action="@{/posts/create}" th:method="get">-->
-<!--                <button class="button is-link is-hovered" style="margin-top: 8px">Write a Post</button>-->
-<!--            </form>-->
-<!--        </li>-->
-<!--        <li>-->
-<!--            <form th:action="@{/sign-up}" th:method="get">-->
-<!--                <button class="button is-link is-hovered" style="margin-top: 8px">Sign-Up</button>-->
-<!--            </form>-->
-<!--        </li>-->
-<!--        <li>-->
-<!--            <form th:action="@{/login}" th:method="get">-->
-<!--                <button class="button is-link is-hovered" style="margin-top: 8px">Login</button>-->
-<!--            </form>-->
-<!--        </li>-->
-<!--        <li>-->
-<!--            <form th:action="@{/logout}" th:method="post">-->
-<!--                <button class="button is-link is-hovered" style="margin-top: 8px">Logout</button>-->
-<!--            </form>-->
-<!--        </li>-->
-<!--    </ul>-->
 
-<!--</nav>-->
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+
+        // Get all "navbar-burger" elements
+        const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+
+        // Check if there are any navbar burgers
+        if ($navbarBurgers.length > 0) {
+
+            // Add a click event on each of them
+            $navbarBurgers.forEach( el => {
+                el.addEventListener('click', () => {
+
+                    // Get the target from the "data-target" attribute
+                    const target = el.dataset.target;
+                    const $target = document.getElementById(target);
+
+                    // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
+                    el.classList.toggle('is-active');
+                    $target.classList.toggle('is-active');
+
+                });
+            });
+        }
+
+    });
+</script>
+
+
 
 
 </body>
